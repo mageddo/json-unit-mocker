@@ -14,7 +14,6 @@ public class JsonDbTest {
 	@Test
 	public void writeMockTest() throws IOException{
 		JsonDB.setObject(new Object());
-		
 	}
 	
 	
