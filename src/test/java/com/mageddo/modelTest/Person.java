@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mageddo.json.unit.mocker.model;
+package com.mageddo.modelTest;
+
 
 /**
  *
@@ -11,5 +12,5 @@ package com.mageddo.json.unit.mocker.model;
  */
 public class Person {
 	public String name;
-	public String birthYear;
+	public int birthYear;
 }
