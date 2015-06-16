@@ -1,0 +1,22 @@
+[
+  {
+    "childs": [
+      {
+        "name": "Bob",
+        "birthYear": 2010
+      }
+    ],
+    "name": "Michael",
+    "birthYear": 1967
+  },
+  {
+    "childs": [
+      {
+        "name": "Bob",
+        "birthYear": 2010
+      }
+    ],
+    "name": "Jane",
+    "birthYear": 1970
+  }
+]

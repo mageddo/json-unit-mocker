@@ -25,6 +25,7 @@ public class JsonDbTest {
 	
 	
 	private static final String FAMILY_MOCK_FILE_NAME ="theFamilies/happyFamily";
+	private static final String FAMILY_ATTACHED_FILE_NAME ="theAttachedFamilies/happyFamily";
 	private Child childBob;
 	private Parent mother;
 	private Parent father;
@@ -98,6 +99,24 @@ public class JsonDbTest {
 	@Test 
 	public void atLeastOneFolderOnClassPathTest(){
 		Assert.assertTrue(JsonDB.getDefaultFolder().isDirectory());
+	}
+	
+	@Test
+	public void readAttachedMockTest(){
+		List<Parent> readedfamily = JsonDB.readMock(FAMILY_ATTACHED_FILE_NAME, new TypeToken<List<Parent>>(){}.getType());
+		assertNotNull(readedfamily);
+		Parent readFather = readedfamily.get(0);
+		assertEquals(father.name, readFather.name);
+		assertEquals(father.birthYear, readFather.birthYear);
+		
+		Parent readMother = readedfamily.get(1);
+		assertEquals(mother.name, readMother.name);
+		assertEquals(mother.birthYear, readMother.birthYear);
+		
+		Child readChild = readFather.childs.get(0);
+		assertEquals(childBob.name, readChild.name);
+		assertEquals(childBob.birthYear, readChild.birthYear);
+		
 	}
 	
 }
