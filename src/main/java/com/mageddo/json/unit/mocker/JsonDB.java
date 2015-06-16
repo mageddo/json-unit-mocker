@@ -33,6 +33,7 @@ public class JsonDB {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static<T> T readMock(String mockEntityName, Class<?> type){
 		try {
 			return (T) gson.fromJson(FileUtils.readFileToString(getPathInClassPath(mockEntityName)), type);
@@ -47,6 +48,7 @@ public class JsonDB {
 	 * @param type the type to deserialize
 	 * @return the deserialized object
 	 */
+	@SuppressWarnings("unchecked")
 	public static<T> T readMock(File mockEntityFile, Class<?> type){
 		try {
 			return (T) gson.fromJson(FileUtils.readFileToString(mockEntityFile), type);
