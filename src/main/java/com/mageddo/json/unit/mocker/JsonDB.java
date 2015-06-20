@@ -12,6 +12,10 @@ import org.apache.commons.io.FileUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mageddo.utils.ClasshPathUtil;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import org.apache.commons.io.IOUtils;
+import sun.nio.ch.IOUtil;
 
 /**
  *
@@ -40,6 +44,29 @@ public class JsonDB {
 		} catch (IOException ex) {
 			return null;
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static String readAsString(String mockEntityName){
+		try {
+			return FileUtils.readFileToString(getPathInClassPath(mockEntityName));
+		} catch (IOException ex) {
+			return null;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static InputStream readAsStream(String mockEntityName){
+		try {
+			return new FileInputStream(getPathInClassPath(mockEntityName));
+		} catch (IOException ex) {
+			return null;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static File readAsFile(String mockEntityName){
+		return getPathInClassPath(mockEntityName);
 	}
 	
 	/**
