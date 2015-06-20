@@ -13,9 +13,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mageddo.utils.ClasshPathUtil;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
-import org.apache.commons.io.IOUtils;
-import sun.nio.ch.IOUtil;
 
 /**
  *
@@ -29,39 +28,23 @@ public class JsonDB {
 	
 	private JsonDB(){};
 	
-	public static <T> T readMock(String mockEntityName, Type type){
-		try {
-			return gson.fromJson(FileUtils.readFileToString(getPathInClassPath(mockEntityName)), type);
-		} catch (IOException ex) {
-			return null;
-		}
+	public static <T> T readMock(String mockEntityName, Type type) throws IOException{
+		return gson.fromJson(FileUtils.readFileToString(getPathInClassPath(mockEntityName)), type);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static<T> T readMock(String mockEntityName, Class<?> type){
-		try {
-			return (T) gson.fromJson(FileUtils.readFileToString(getPathInClassPath(mockEntityName)), type);
-		} catch (IOException ex) {
-			return null;
-		}
+	public static<T> T readMock(String mockEntityName, Class<?> type) throws IOException {
+		return (T) gson.fromJson(FileUtils.readFileToString(getPathInClassPath(mockEntityName)), type);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static String readAsString(String mockEntityName){
-		try {
-			return FileUtils.readFileToString(getPathInClassPath(mockEntityName));
-		} catch (IOException ex) {
-			return null;
-		}
+	public static String readAsString(String mockEntityName) throws IOException{
+		return FileUtils.readFileToString(getPathInClassPath(mockEntityName));
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static InputStream readAsStream(String mockEntityName){
-		try {
-			return new FileInputStream(getPathInClassPath(mockEntityName));
-		} catch (IOException ex) {
-			return null;
-		}
+	public static InputStream readAsStream(String mockEntityName) throws FileNotFoundException {
+		return new FileInputStream(getPathInClassPath(mockEntityName));
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -71,17 +54,15 @@ public class JsonDB {
 	
 	/**
 	 * Deserialize the object from the json file
+	 * @param <T>
 	 * @param mockEntityFile the json file
 	 * @param type the type to deserialize
 	 * @return the deserialized object
+	 * @throws java.io.IOException
 	 */
 	@SuppressWarnings("unchecked")
-	public static<T> T readMock(File mockEntityFile, Class<?> type){
-		try {
-			return (T) gson.fromJson(FileUtils.readFileToString(mockEntityFile), type);
-		} catch (IOException ex) {
-			return null;
-		}
+	public static<T> T readMock(File mockEntityFile, Class<?> type) throws IOException {
+		return (T) gson.fromJson(FileUtils.readFileToString(mockEntityFile), type);
 	}
 	
 	/**
