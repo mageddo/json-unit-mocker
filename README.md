@@ -5,6 +5,5 @@ you will can use in yours unit and integration tests as object
 	1. You write  a **JSON** mock
 	2. The API **read** the **mock** and **convert** it to the **object** that you **specify**
 	3. You cant use this converted objects in yours tests
-- Simple Example
-- More examples 
-For more examples please read/run the unit tests in the project
+- Examples
+For examples please read/run the unit tests in the project
