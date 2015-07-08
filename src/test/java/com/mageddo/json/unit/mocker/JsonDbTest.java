@@ -102,7 +102,7 @@ public class JsonDbTest {
 	}
 	
 	@Test
-	public void readAttachedMockTest(){
+	public void readAttachedMockTest() throws IOException{
 		List<Parent> readedfamily = JsonDB.readMock(FAMILY_ATTACHED_FILE_NAME, new TypeToken<List<Parent>>(){}.getType());
 		assertNotNull(readedfamily);
 		Parent readFather = readedfamily.get(0);

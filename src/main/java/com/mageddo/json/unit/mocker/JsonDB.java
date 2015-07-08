@@ -126,7 +126,7 @@ public class JsonDB {
 	 * Allows to subscribe another gson serializer with different rules for example.
 	 * @param gson
 	 */
-	public void setSerializer(Gson gson){
+	public static void setGson(Gson gson){
 		JsonDB.gson = gson;
 	}
 }
