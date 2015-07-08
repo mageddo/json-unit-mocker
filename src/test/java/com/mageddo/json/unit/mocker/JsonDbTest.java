@@ -96,11 +96,6 @@ public class JsonDbTest {
 		Assert.assertFalse(classpath.trim().isEmpty());
 	}
 	
-	@Test 
-	public void atLeastOneFolderOnClassPathTest(){
-		Assert.assertTrue(JsonDB.getDefaultFolder().isDirectory());
-	}
-	
 	@Test
 	public void readAttachedMockTest() throws IOException{
 		List<Parent> readedfamily = JsonDB.readMock(FAMILY_ATTACHED_FILE_NAME, new TypeToken<List<Parent>>(){}.getType());

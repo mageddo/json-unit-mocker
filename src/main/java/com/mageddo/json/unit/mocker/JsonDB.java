@@ -4,26 +4,25 @@
 package com.mageddo.json.unit.mocker;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Type;
 
 import org.apache.commons.io.FileUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mageddo.utils.ClasshPathUtil;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import com.mageddo.utils.MockerUtil;
 
 /**
- *
+ * Utility to read/write JSON mocks from the classpath, the default paths have the .json suffix
  * @author Elvis
  */
 public class JsonDB {
 	
 	private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
-	private static final int DEFAULT_INDEX = 0;
 	private static final String DEFAULT_EXTENSION = ".json";
 	
 	private JsonDB(){};
@@ -81,21 +80,12 @@ public class JsonDB {
 	
 	/**
 	 * load the file path from the first classpath folder
-	 * @param fileName
+	 * @param fileName the relative path to the file, 
+	 * will be placed the {@value JsonDB#DEFAULT_EXTENSION} in the end
 	 * @return the relative path to the specified file name
 	 */
 	public static File getPathInClassPath(String fileName) {
-		return new File(getDefaultFolder(), fileName + DEFAULT_EXTENSION);
-	}
-
-	/**
-	 * Return the default path to save the json file<br>
-	 * This folder is the first folder in the classpath
-	 * @return
-	 */
-	public static File getDefaultFolder() {
-		return ClasshPathUtil.getInstance()
-				.getPath(DEFAULT_INDEX);
+		return new File(MockerUtil.getDefaultFolder(), fileName + DEFAULT_EXTENSION);
 	}
 
 	/**
